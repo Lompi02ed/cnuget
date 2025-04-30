@@ -12,5 +12,12 @@
     "Miestas": "Kaunas",
     "Prenumerata": "Premium",
     "Tipas": "Vartotojas"
+  },
+  {
+    "Vardas": "Gabija",
+    "Amžius": 20,
+    "Miestas": "Klaipėda",
+    "Prenumerata": "Basic",
+    "Tipas": "Vartotojas"
   }
 ]
