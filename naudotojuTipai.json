@@ -1,0 +1,16 @@
+[
+  {
+    "Vardas": "Aistė",
+    "Amžius": 30,
+    "Miestas": "Vilnius",
+    "Leidimai": "Visi",
+    "Tipas": "Admin"
+  },
+  {
+    "Vardas": "Tomas",
+    "Amžius": 25,
+    "Miestas": "Kaunas",
+    "Prenumerata": "Premium",
+    "Tipas": "Vartotojas"
+  }
+]
