@@ -32,35 +32,46 @@ class Programa
 
     static void Main(string[] args)
     {
-        string json = File.ReadAllText("naudotojuTipai.json");
-        List<BendraNaudotojuStruktura> sarasas = JsonConvert.DeserializeObject<List<BendraNaudotojuStruktura>>(json);
-
-        foreach (var naudotojas in sarasas)
+        try
         {
-            if (naudotojas.Tipas == "Admin")
-            {
-                var admin = new Administratorius
-                {
-                    Vardas = naudotojas.Vardas,
-                    Amžius = naudotojas.Amžius,
-                    Miestas = naudotojas.Miestas,
-                    Leidimai = naudotojas.Leidimai
-                };
+            string json = File.ReadAllText("naudotojuTipai.json");
+            List<BendraNaudotojuStruktura> sarasas = JsonConvert.DeserializeObject<List<BendraNaudotojuStruktura>>(json);
 
-                Console.WriteLine($"ADMIN | {admin.Vardas} – Leidimai: {admin.Leidimai}");
-            }
-            else
+            foreach (var naudotojas in sarasas)
             {
-                var vartotojas = new PaprastasNaudotojas
+                if (naudotojas.Tipas == "Admin")
                 {
-                    Vardas = naudotojas.Vardas,
-                    Amžius = naudotojas.Amžius,
-                    Miestas = naudotojas.Miestas,
-                    Prenumerata = naudotojas.Prenumerata
-                };
+                    var admin = new Administratorius
+                    {
+                        Vardas = naudotojas.Vardas,
+                        Amžius = naudotojas.Amžius,
+                        Miestas = naudotojas.Miestas,
+                        Leidimai = naudotojas.Leidimai
+                    };
 
-                Console.WriteLine($"VARTOTOJAS | {vartotojas.Vardas} – Prenumerata: {vartotojas.Prenumerata}");
+                    Console.WriteLine($"ADMIN | {admin.Vardas} – Leidimai: {admin.Leidimai}");
+                }
+                else
+                {
+                    var vartotojas = new PaprastasNaudotojas
+                    {
+                        Vardas = naudotojas.Vardas,
+                        Amžius = naudotojas.Amžius,
+                        Miestas = naudotojas.Miestas,
+                        Prenumerata = naudotojas.Prenumerata
+                    };
+
+                    Console.WriteLine($"VARTOTOJAS | {vartotojas.Vardas} – Prenumerata: {vartotojas.Prenumerata}");
+                }
             }
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("Klaida: nerastas failas");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Įvyko klaida: " + ex.Message);
         }
     }
 }
